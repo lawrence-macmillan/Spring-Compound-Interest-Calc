@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+  <head>
+    <title>User Response</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script type="text/javascript" src="line.css" ></script>
+  </head>
+
+  <body>
+  <br>
+    <h1 style="text-align:center">Compound Interest Calculation</h1>
+	<br>
+	<script th:inline="javascript">
+		const bdAmount = []
+		const bdcInterest = []
+		const initialInvestment = []
+	</script>
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-sm">
+		</div>
+		<tr th:each="calculationObject, iterStat : ${calculationObjects}" th:if="${iterStat.index >= iterStat.size-1}">
+		<div class="col-sm" style="text-align:center">
+		  <p>Total Interest Earned: </p><h3 style="color:#61adfb" th:text="${#numbers.formatCurrency(calculationObject.bdcInterest)}"></h3>
+		</div>
+		<div class="col-sm" style="text-align:center">
+		  <p>Final Investment Amount: </p><h3 style="color:#0ecf0e" th:text="${#numbers.formatCurrency(calculationObject.bdAmount)}"></h3>
+		</div>
+		</tr>
+		<div class="col-sm">
+		</div>
+	  </div>
+	</div>
+	
+	<br>
+	
+	 <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-6">
+      		<table class="table table-hover">
+		  <thead>
+			<tr>
+			  <th scope="col">Year</th>
+			  <th scope="col">Current Year Interest</th>
+			  <th scope="col">Total Interest</th>
+			  <th scope="col">Year Total</th>
+			</tr>
+		  </thead>
+		  <tbody>
+		  
+		   <tr th:each="calculationObject, iterStat : ${calculationObjects}">
+			  <th scope="row" th:text="${calculationObject.years}"></th>
+			  <th scope="row" th:text="${#numbers.formatCurrency(calculationObject.currentYearInterest)}"></th>
+			  <th scope="row" th:text="${#numbers.formatCurrency(calculationObject.bdcInterest)}"></th>
+			  <td th:text="${#numbers.formatCurrency(calculationObject.bdAmount)}"></td>
+			  <script th:inline="javascript">
+				/*<![CDATA[*/
+
+					bdAmount.push(/*[[${calculationObject.bdAmount}]]*/);
+					bdcInterest.push(/*[[${calculationObject.bdcInterest}]]*/);
+					initialInvestment.push(/*[[${calculationObject.initialInvestment}]]*/);
+					
+				/*]]>*/
+			  </script>
+			</tr>
+		  </tbody>
+		</table>
+    </div>
+    <div class="col">
+    </div>
+  </div>
+
+  <h2 style="text-align:center">Results in graph:</h2>
+	<br>
+	 <div class="row">
+    <div class="col">
+    </div>
+    <div class="col-6">
+
+	<figure class="highcharts-figure">
+		<div id="container"></div>
+	</figure>
+
+    </div>
+    <div class="col">
+    </div>
+  </div>
+
+  </body>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+	<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="line.js" ></script>
+</html>
