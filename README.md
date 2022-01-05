@@ -10,4 +10,4 @@
 <h2>Getting Started</h2>
 
 <h2>License</h2>
-<p>Spring Interest Calc project is under the Apache 2.0 license. See the <a href="/LICENSE.md">LICENSE</a> file for details.<p>
+<p>Spring Interest Calc project is under the Apache 2.0 license. See the <a href="/LICENSE">LICENSE</a> file for details.<p>
