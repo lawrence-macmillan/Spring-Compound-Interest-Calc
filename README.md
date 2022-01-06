@@ -9,7 +9,7 @@
 <h3>Prerequisites</h3>
 
 - Java 8 or newer (full JDK)
-- git command line tool (https://help.github.com/articles/set-up-git)
+- Git command line tool (https://help.github.com/articles/set-up-git)
 - Your preferred IDE (developed in Eclipse)
 
 <h3>Steps</h3>
